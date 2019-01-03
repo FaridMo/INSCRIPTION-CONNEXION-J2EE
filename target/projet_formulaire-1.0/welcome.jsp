@@ -1,3 +1,11 @@
+<%-- 
+    Document   : welcome
+    Created on : 3 janv. 2019, 01:46:35
+    Author     : USER
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -30,8 +38,13 @@ and open the template in the editor.
     </head>
     <body>
         
-        
-        
+        <%
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            
+            if(session.getAttribute("login")==null){
+                response.sendRedirect("index.html");
+           }
+        %>
         <div class="div1">
             <p>
                 Bienvenue dans la page d'accueil :)
@@ -50,3 +63,4 @@ and open the template in the editor.
         
     </body>
 </html>
+

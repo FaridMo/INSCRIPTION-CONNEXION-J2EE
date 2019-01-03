@@ -34,10 +34,15 @@ public class ConnectionServlet extends HttpServlet {
             String password = request.getParameter("mdp");
             
             if(!Authentification.testBD(email, password)){
-                response.sendRedirect("index.html");
+                //response.sendRedirect("index.html");
+                request.getRequestDispatcher("index.html").include(request, response); 
             }else{
-                response.sendRedirect("welcome.html");
-                request.getSession().setAttribute("login", email);
+                HttpSession session=request.getSession();  
+                session.setAttribute("login",email);
+            
+                response.sendRedirect("welcome.jsp");
+                
+                
             }
             
             

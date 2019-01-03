@@ -22,12 +22,13 @@ import javax.servlet.http.HttpSession;
 public class deconnexionServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             
-            request.getSession().invalidate();
+            HttpSession session=request.getSession();  
+            session.invalidate();  
             
-            response.sendRedirect("index.html");
+            request.getRequestDispatcher("index.html").include(request, response);  
             
     }
 
